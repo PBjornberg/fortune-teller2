@@ -8,22 +8,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FortuneTellerGui extends JFrame implements ActionListener {
-    private static String NAME_LABEL = "Name:";
-    private static String INCOME_LABEL = "Income (monthly):";
-    private static String LOCATION_LABEL = "Location:";
-    private static String AGE_LABEL = "Age:";
-    private static String HEIGHT_LABEL = "Height:";
-    private static String FORTUNE_LABEL = "Your fortune:";
-    private static String BUTTON_TEXT = "Calculate";
-    private FortuneTeller fortuneTeller;
-    private JTextField nameField = new JTextField();
-    private JTextField incomeField = new JTextField();
-    private JTextField locationField = new JTextField();
-    private JTextField ageField = new JTextField();
-    private JTextField heightField = new JTextField();
-    private JTextArea resultField = new JTextArea();
-    private JButton calculateButton = new JButton(BUTTON_TEXT);
-    private JPanel mainPanel = new JPanel();
+
+    private static final String NAME_LABEL = "Name:";
+    private static final String INCOME_LABEL = "Income (monthly):";
+    private static final String LOCATION_LABEL = "Location:";
+    private static final String AGE_LABEL = "Age:";
+    private static final String HEIGHT_LABEL = "Height:";
+    private static final String FORTUNE_LABEL = "Your fortune:";
+    private static final String BUTTON_TEXT = "Calculate";
+    private final FortuneTeller fortuneTeller;
+    private final JTextField nameField = new JTextField();
+    private final JTextField incomeField = new JTextField();
+    private final JTextField locationField = new JTextField();
+    private final JTextField ageField = new JTextField();
+    private final JTextField heightField = new JTextField();
+    private final JTextArea resultField = new JTextArea();
+    private final JButton calculateButton = new JButton(BUTTON_TEXT);
+    private final JPanel mainPanel = new JPanel();
 
     public FortuneTellerGui(FortuneTeller fortuneTeller) {
         this.fortuneTeller = fortuneTeller;
@@ -62,6 +63,7 @@ public class FortuneTellerGui extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(this, message, "Error!", JOptionPane.ERROR_MESSAGE);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == calculateButton) {
             boolean valid = true;
@@ -82,11 +84,7 @@ public class FortuneTellerGui extends JFrame implements ActionListener {
                 alert("Invalid height! Must not contain anything but numbers.");
             }
             if (valid) {
-                try {
-                    resultField.setText(fortuneTeller.calculate());
-                } catch (Exception exception) {
-                    JOptionPane.showMessageDialog(this, exception.toString());
-                }
+                resultField.setText(fortuneTeller.calculate());
             }
         }
     }

@@ -38,7 +38,7 @@ public class FortuneTeller {
     public boolean setName(String name) {
 
         magicNumbers.setName(name);
-        return name != null;
+        return name != null && !"".equals(name);
     }
 
     private Integer convertToInteger(String input) {
@@ -63,7 +63,7 @@ public class FortuneTeller {
 
     public boolean setLocation(String location) {
         magicNumbers.setLocation(location);
-        return location != null;
+        return location != null && !"".equals(location);
     }
 
     public boolean setAge(String age) {
